@@ -5,15 +5,16 @@ library(jpeg)
 model = load_model_hdf5('model')
 
 
-python.load('gps_thread.py')
 python.load('lees_gps')
 
 Sys.sleep(100)
 i=0
 
+location_old = c(NA,NA,NA)
 
 
 while(0<1){
+
   print(i)
   i = i+1
   
@@ -39,6 +40,11 @@ file.remove(file_name)
 ##
 
 #sent data
-
+#if sighting
+c(location, location_old, pred , time)
+#sent photo as well
 ##
+
+location_old = location
+
 }
