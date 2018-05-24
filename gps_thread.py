@@ -1,4 +1,3 @@
-
 import os
 from gps import *
 from time import *
