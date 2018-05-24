@@ -2,6 +2,8 @@ library(keras)
 library(rPython)
 library(jpeg)
 
+system('sudo gpsd -n /dev/ttyS0 -F /var/run/gpsd.sock')
+
 model = load_model_hdf5('model')
 
 
@@ -30,7 +32,7 @@ system(command)
 ##
 
 #get location
-location = python.call('get_location')
+location = unlist(python.call('get_location'))
 ##
 
 #classify image
