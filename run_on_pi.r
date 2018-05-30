@@ -42,6 +42,8 @@ file.remove(file_name)
 ##
 
 #sent data
+#if gps fix
+if(length(location)>2 & length(location_old)>2){}
 #if sighting
 c(location, location_old, pred , time)
 #sent photo as well
