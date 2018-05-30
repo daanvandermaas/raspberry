@@ -12,7 +12,7 @@ import threading
 
 
 gpsd = None #seting the global variable
-
+gpsp = None
 
 
 
@@ -33,6 +33,7 @@ class GpsPoller(threading.Thread):
 
   
 def get_location():
+  global gpsp
   gpsp = GpsPoller() # create the thread
   
   gpsp.start() # start it up

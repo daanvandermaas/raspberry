@@ -7,7 +7,7 @@ system('sudo gpsd -n /dev/ttyS0 -F /var/run/gpsd.sock')
 model = load_model_hdf5('model')
 
 
-python.load('lees_gps')
+python.load('lees_gps.py')
 
 Sys.sleep(100)
 i=0
