@@ -12,7 +12,7 @@ python.load('lees_gps.py')
 Sys.sleep(100)
 i=0
 
-location_old = c(NA,NA,NA)
+location_old = c()
 
 
 while(0<1){
