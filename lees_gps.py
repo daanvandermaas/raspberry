@@ -46,3 +46,4 @@ def get_location():
   gpsp.join() # wait for the thread to finish what it's doing
   
   return [lat,lon,speed]
+  
