@@ -37,7 +37,7 @@ def get_location():
   gpsp = GpsPoller() # create the thread
   
   gpsp.start() # start it up
-  
+  time.sleep(0.5)
   lat =  gpsd.fix.latitude
   lon =  gpsd.fix.longitude
   speed = gpsd.fix.speed
@@ -47,4 +47,7 @@ def get_location():
   gpsp.join() # wait for the thread to finish what it's doing
   
   return [lat,lon,speed]
-  
+
+if __name__ == '__main__':
+  print('hoi')  
+  print(get_location())

@@ -16,7 +16,7 @@ i=0
 location_old = c()
 
 
-for(n in 0:1000){
+for(n in 0:500){
 
   print(i)
   i = i+1
