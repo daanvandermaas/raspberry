@@ -35,32 +35,40 @@ time = gsub(time , replacement =  '_', pattern = ' ')
 ##
 
 #take photo
-file_name = paste0(i, '_', time ,'.jpg')
-command = paste0('raspistill -o ', file.path(dir ,file_name), ' -w 512 -h 512 --nopreview -t 2000')
+file_name_image = paste0(i, '_', time ,'.jpg')
+command = paste0('raspistill -o ', file.path(dir ,file_name_image), ' -w 512 -h 512 --nopreview -t 2000')
 system(command)
 ##
 
 #get location
 location = unlist(python.call('get_location'))
-file_name = paste0(i, '_', time ,'.rds')
-saveRDS(location, file.path(dir ,file_name))
+file_name_gps = paste0(i, '_', time ,'.rds')
+saveRDS(location, file.path(dir ,file_name_gps))
 print(location)
 ##
 
+####JUST FOR TESTING
+
+location = c(52,123213, 3,342234, 6.43)
+pred = 1
+
+#####
+
 #classify image
-#im = readJPEG(file_name)
+im = readJPEG(file_name_image)
 #pred = model$predict_classes(im)
-#file.remove(file_name)
+file.remove(file_name_image)
 ##
 
 #sent data
 #if gps fix
-#if(length(location)>2 & length(location_old)>2){
+if(length(location)>2 & length(location_old)>2){
 #if sighting sent the following message
-q = paste0("INSERT INTO digitaalschouwen (location, location_old, prediction , time) VALUES (", location, "," , location_old , ",", pred, ",'" , time , "')")
+if(pred == 1){
+q = paste0("INSERT INTO digitaalschouwen (time, prediction, location_x, location_y, location_old_x, location_old_y) VALUES (", time, ",", pred, ",", location[1], ",", location[2], "," , location_old[1], ",", location_old[2],")")
 dbSendQuery(con , q)
 #sent photo as well
-#}
+}}
 location_old = location
 
 
