@@ -3,7 +3,6 @@ library(rPython)
 library(jpeg)
 library(RMySQL)
 
-#ssh pi@62.140.137.33
 
 con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
 
@@ -16,13 +15,13 @@ system('sudo gpsd -n /dev/ttyS0 -F /var/run/gpsd.sock')
 
 python.load('lees_gps.py')
 
-#Sys.sleep(100)
+
 i=0
 
 location_old = c()
 
 
-for(n in 0:500){
+while(0<1){
 
   print(i)
   i = i+1
@@ -51,7 +50,7 @@ file.remove(file_name_image)
 ##
 
 ####JUST FOR TESTING
-location = c(52,123213, 3,342234, 6.43)
+#location = c(52,123213, 3,342234, 6.43)
 pred = 1
 #####
 
