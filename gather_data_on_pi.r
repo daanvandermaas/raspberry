@@ -34,7 +34,7 @@ while(0<1){
   #get location
   location = unlist(python.call('get_location'))
   file_name_gps = paste0(i,'.rds')
-  saveRDS(location, file.path(dir ,file_name_gps))
+  write( paste(time, location), file.path(dir ,file_name_gps))
   print(location)
  
   
