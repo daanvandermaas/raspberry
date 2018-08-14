@@ -1,11 +1,7 @@
-library(keras)
 library(rPython)
 library(jpeg)
-library(RMySQL)
 
 dir = '/media/pi/A894-OC66'
-
-con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
 
 system('teamviewer')
 system('sudo gpsd -n /dev/ttyS0 -F /var/run/gpsd.sock')
