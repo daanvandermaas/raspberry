@@ -68,7 +68,7 @@ dbSendQuery(con , q)
 location_old = location
 
 
-if(i %% 100 == 0 ){
+if(i %% 20 == 0 ){
   dbDisconnect(con)
   con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
 }
