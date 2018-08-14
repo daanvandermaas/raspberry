@@ -50,7 +50,7 @@ file.remove(file_name_image)
 ##
 
 ####JUST FOR TESTING
-#location = c(52,123213, 3,342234, 6.43)
+#location = c(52.123213, 3.342234, 6.43)
 pred = 1
 #####
 
@@ -60,7 +60,7 @@ pred = 1
 if(length(location)>2 & length(location_old)>2){
 #if sighting sent the following message
 if(pred == 1){
-q = paste0("INSERT INTO digitaalschouwen (time, prediction, location_x, location_y, location_old_x, location_old_y) VALUES ('", time, "',", pred, ",", location[1], ",", location[2], "," , location_old[1], ",", location_old[2],")")
+q = paste0("INSERT INTO digitaalschouwen (time, prediction, location_x, location_y, location_old_x, location_old_y) VALUES ('", time, "',", pred, ",'", location[1], "','", location[2], "','" , location_old[1], "','", location_old[2],"')")
 dbSendQuery(con , q)
 #sent photo as well
 }}
