@@ -46,7 +46,8 @@ print(location)
 #classify image
 im = readJPEG(file_name_image)
 #pred = model$predict_classes(im)
-file.remove(file_name_image)
+command = paste('rm', file_name_image)
+system(command)
 ##
 
 ####JUST FOR TESTING
@@ -67,12 +68,12 @@ dbSendQuery(con , q)
 location_old = location
 
 
-if(i %% 100){
+if(i %% 100 == 0 ){
   dbDisconnect(con)
   con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
 }
 
-if(i %% 3000){
+if(i %% 3000 == 0 ){
   q = "TRUNCATE TABLE digitaalschouwen"
   dbSendQuery(con , q)
   }
