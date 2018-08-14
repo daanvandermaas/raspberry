@@ -3,8 +3,11 @@ library(rPython)
 library(jpeg)
 library(RMySQL)
 
+#ssh pi@62.140.137.33
+
 con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
 
+system('teamviewer')
 system('sudo gpsd -n /dev/ttyS0 -F /var/run/gpsd.sock')
 
 
@@ -52,12 +55,12 @@ print(location)
 
 #sent data
 #if gps fix
-if(length(location)>2 & length(location_old)>2){
+#if(length(location)>2 & length(location_old)>2){
 #if sighting sent the following message
 q = paste0("INSERT INTO digitaalschouwen (location, location_old, prediction , time) VALUES (", location, "," , location_old , ",", pred, ",'" , time , "')")
 dbSendQuery(con , q)
 #sent photo as well
-}
+#}
 location_old = location
 
 
@@ -66,5 +69,11 @@ if(i %% 100){
   con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
 }
 
+if(i %% 3000){
+  q = "TRUNCATE TABLE digitaalschouwen"
+  dbSendQuery(con , q)
+  }
 
 }
+
+
