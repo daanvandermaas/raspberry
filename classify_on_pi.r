@@ -11,8 +11,6 @@ system('teamviewer')
 system('sudo gpsd -n /dev/ttyS0 -F /var/run/gpsd.sock')
 
 
-#dir = '/media/pi/2B94B18C738EFD89'
-dir = "/home/pi/raspberry"
 #model = load_model_hdf5('model')
 
 
@@ -42,23 +40,21 @@ system(command)
 
 #get location
 location = unlist(python.call('get_location'))
-file_name_gps = paste0(i, '_', time ,'.rds')
-saveRDS(location, file.path(dir ,file_name_gps))
 print(location)
 ##
 
-####JUST FOR TESTING
-
-location = c(52,123213, 3,342234, 6.43)
-pred = 1
-
-#####
 
 #classify image
 im = readJPEG(file_name_image)
 #pred = model$predict_classes(im)
 file.remove(file_name_image)
 ##
+
+####JUST FOR TESTING
+location = c(52,123213, 3,342234, 6.43)
+pred = 1
+#####
+
 
 #sent data
 #if gps fix
