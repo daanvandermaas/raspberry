@@ -61,7 +61,8 @@ pred = 1
 if(length(location)>2 & length(location_old)>2){
 #if sighting sent the following message
 if(pred == 1){
-q = paste0("INSERT INTO digitaalschouwen (time, prediction, location_x, location_y, location_old_x, location_old_y) VALUES ('", time, "',", pred, ",'", location[1], "','", location[2], "','" , location_old[1], "','", location_old[2],"')")
+id = paste(time, location[1], location[2], pred)
+q = paste0("INSERT INTO digitaalschouwen (ID, time, prediction, location_x, location_y, location_old_x, location_old_y) VALUES ('", id, "','", time, "',", pred, ",'", location[1], "','", location[2], "','" , location_old[1], "','", location_old[2],"')")
 dbSendQuery(con , q)
 #sent photo as well
 }}
