@@ -34,7 +34,7 @@ time = gsub(time , replacement =  '_', pattern = ' ')
 
 #take photo
 file_name_image = paste0(i, '_', time ,'.jpg')
-command = paste0('raspistill -o ', file.path(dir ,file_name_image), ' -w 512 -h 512 --nopreview -t 2000')
+command = paste0('raspistill -o ', file_name_image, ' -w 512 -h 512 --nopreview -t 2000')
 system(command)
 ##
 
