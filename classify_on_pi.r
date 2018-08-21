@@ -46,9 +46,7 @@ print(location)
 #classify image
 im = readJPEG(file_name_image)
 #pred = model$predict_classes(im)
-command = paste('rm', file_name_image)
-system(command)
-##
+
 
 ####JUST FOR TESTING
 #location = c(52.123213, 3.342234, 6.43)
@@ -62,12 +60,20 @@ if(length(location)>2 & length(location_old)>2){
 #if sighting sent the following message
 if(pred == 1){
 id = paste(time, location[1], location[2], pred)
-q = paste0("INSERT INTO digitaalschouwen (id, time, prediction, location_x, location_y, location_old_x, location_old_y) VALUES ('", id, "','", time, "',", pred, ",'", location[1], "','", location[2], "','" , location_old[1], "','", location_old[2],"')")
+
+im_string = paste(as.vector(im), collapse = ' ')
+
+q = paste0("INSERT INTO digitaalschouwen (id, time, prediction, location_x, location_y, location_old_x, location_old_y, photo) VALUES ('", id, "','", time, "',", pred, ",'", location[1], "','", location[2], "','" , location_old[1], "','", location_old[2],"','", im_string,"')")
 dbSendQuery(con , q)
 #sent photo as well
 }}
 location_old = location
 
+
+#remove image
+command = paste('rm', file_name_image)
+system(command)
+##
 
 if(i %% 20 == 0 ){
   dbDisconnect(con)
