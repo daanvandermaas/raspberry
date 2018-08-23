@@ -2,7 +2,7 @@ library(keras)
 library(rPython)
 library(jpeg)
 library(RMySQL)
-
+library(base64enc)
 
 con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
 
@@ -61,9 +61,9 @@ if(length(location)>2 & length(location_old)>2){
 if(pred == 1){
 id = paste(time, location[1], location[2], pred)
 
-im_string = paste(as.vector(im), collapse = ' ')
+im_string = base64enc::base64encode(file_name_image)
 
-q = paste0("INSERT INTO digitaalschouwen (id, time, prediction, location_x, location_y, location_old_x, location_old_y, photo) VALUES ('", id, "','", time, "',", pred, ",'", location[1], "','", location[2], "','" , location_old[1], "','", location_old[2],"','", im_string,"')")
+q = paste0("INSERT INTO digitaalschouwen (id, time, prediction, location_x, location_y, location_old_x, location_old_y, photo) VALUES ('", id, "','", time, "',", pred, ",'", location[1], "','", location[2], "','" , location_old[1], "','", location_old[2], "', '", im_string, "')")
 dbSendQuery(con , q)
 #sent photo as well
 }}

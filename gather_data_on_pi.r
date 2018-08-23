@@ -1,7 +1,7 @@
 library(rPython)
 library(jpeg)
 
-dir = '/media/pi/A894-0C66'
+dir = '/media/pi/A894-0C66/day2_1024'
 
 system('teamviewer')
 system('sudo gpsd -n /dev/ttyS0 -F /var/run/gpsd.sock')
@@ -27,7 +27,7 @@ while(0<1){
   
   #take photo
   file_name_image = paste0(i,'.jpg')
-  command = paste0('raspistill -o ', file.path(dir ,file_name_image), ' -w 512 -h 512 --nopreview -t 2000')
+  command = paste0('raspistill -o ', file.path(dir ,file_name_image), ' -w 1024 -h 1024 --nopreview -t 2000')
   system(command)
   ##
   
