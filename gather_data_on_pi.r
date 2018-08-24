@@ -1,7 +1,7 @@
 library(rPython)
 library(jpeg)
 
-dir = '/media/pi/A894-0C66/day2_1024'
+dir = '/media/pi/A894-0C66/day3_1024'
 
 system('teamviewer')
 system('sudo gpsd -n /dev/ttyS0 -F /var/run/gpsd.sock')
