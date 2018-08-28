@@ -18,6 +18,12 @@ z = dbSendQuery(con , q)
 
 
 
+#place photo in db
+con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
+txt <- base64enc::base64encode("z.jpg")
+dbSendQuery(con, paste0("INSERT INTO digitaalschouwen (id, time, prediction, location_x, location_y, location_old_x, location_old_y, photo) VALUES ('1', '1', 1, '1', '1', '1', '1' ,'", txt  , "')"))
+dbDisconnect(con)
+
 
 
 
@@ -37,7 +43,7 @@ dbDisconnect(con)
 
 
 
-
+con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
 q = paste0("SELECT * FROM digitaalschouwen"  )
 z = dbSendQuery(con , q)
 data = fetch(z, n=-1)

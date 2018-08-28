@@ -8,7 +8,7 @@ library(base64enc)
 
 library(RMySQL)
 
-setwd("~/Desktop/save_img")
+
 
 con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
 
@@ -55,6 +55,8 @@ print(object.size(tst))
 html <- sprintf('<html><body><img src="data:image/png;base64,%s"></body></html>', tst[1,1])
 
 cat(html, file = tf2 <- tempfile(fileext = ".html"))
+
+im = readImage(tf2)
 
 browseURL(tf2)
 

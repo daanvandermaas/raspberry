@@ -1,0 +1,10 @@
+name: boeien_app
+title:
+username:
+account: danielvandermaas
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 403893
+bundleId: 1546266
+url: https://danielvandermaas.shinyapps.io/boeien_app/
+when: 1534853860.14736
