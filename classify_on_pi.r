@@ -45,7 +45,7 @@ print(location)
 
 
 
-if(i %% 20 == 0 ){
+
 
   id = paste(time, location[1], location[2], pred)
   txt <- base64enc::base64encode(file_name_image)
@@ -54,7 +54,7 @@ if(i %% 20 == 0 ){
   
   
   
-}
+
 
 
 if(i %% 20 == 0 ){
@@ -67,6 +67,8 @@ if(i %% 3000 == 0 ){
   dbSendQuery(con , q)
   }
 
+  Sys.sleep(10)
+  
 }
 
 

@@ -6,8 +6,8 @@ library(leaflet)
 library(jpeg)
 
 
-#con <- dbConnect(dbDriver("PostgreSQL"), dbname = "dl_wegdata_productie", host = "10.113.111.240", user = "svc-ad-pdatalab", port=5432, password = 'PD@t@L@b$vc!')
-con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
+con <- dbConnect(dbDriver("PostgreSQL"), dbname = "dl_wegdata_productie", host = "10.113.111.240", user = "svc-ad-pdatalab", port=5432, password = 'PD@t@L@b$vc!')
+#con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
 q = 'SELECT id, time, location_x, location_y FROM digitaalschouwen'
 z = dbSendQuery(con , q)
 data = fetch(z, n=-1)
@@ -46,8 +46,8 @@ server <- function(input, output) {
     p = input$map_marker_click$id
     print(p)
     
-    #con <- dbConnect(dbDriver("PostgreSQL"), dbname = "dl_wegdata_productie", host = "10.113.111.240", user = "svc-ad-pdatalab", port=5432, password = 'PD@t@L@b$vc!')
-    con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
+    con <- dbConnect(dbDriver("PostgreSQL"), dbname = "dl_wegdata_productie", host = "10.113.111.240", user = "svc-ad-pdatalab", port=5432, password = 'PD@t@L@b$vc!')
+    #con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
     q = paste0("SELECT photo FROM digitaalschouwen WHERE id = '", p, "'" )
     z = dbSendQuery(con , q)
     data = fetch(z, n=-1)
@@ -68,8 +68,8 @@ server <- function(input, output) {
     list(src = im(),
          contentType = 'image/png',
          width = 400,
-         height = 300,
-         alt = "This is alternate text")
+         height = 400,
+         alt = "De foto van de gemaakte waarneming.")
   }, deleteFile = FALSE)
   
   
