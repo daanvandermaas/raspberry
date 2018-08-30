@@ -44,14 +44,14 @@ print(location)
 ##
 
 
-
+pred = 1
 
 
   id = paste(time, location[1], location[2], pred)
   txt <- base64enc::base64encode(file_name_image)
   
   q = paste0("INSERT INTO digitaalschouwen (id, time, prediction, location_x, location_y, location_old_x, location_old_y, photo) VALUES ('", id, "','", time, "',", pred, ",'", location[1], "','", location[2], "','" , location_old[1], "','", location_old[2], "', '", txt, "')")
-  
+  dbSendQuery(con, q)
   
   
 
