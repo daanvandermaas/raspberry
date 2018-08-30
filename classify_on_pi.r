@@ -38,8 +38,8 @@ system(command)
 ##
 
 #get location
-location_old = location
 location = unlist(python.call('get_location'))
+location_old = location
 print(location)
 ##
 
