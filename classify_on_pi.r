@@ -32,7 +32,7 @@ time = gsub(time , replacement =  '_', pattern = ' ')
 ##
 
 #take photo
-file_name_image = paste0(i, '_', time ,'.jpg')
+file_name_image = 'image.jpg'
 command = paste0('raspistill -o ', file_name_image, ' -w 512 -h 512 --nopreview -t 2000')
 system(command)
 ##
@@ -57,12 +57,12 @@ pred = 1
 
 
 
-if(i %% 20 == 0 ){
+if(i %% 5 == 0 ){
   dbDisconnect(con)
   con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
 }
 
-if(i %% 3000 == 0 ){
+if(i %% 8 == 0 ){
   q = "TRUNCATE TABLE digitaalschouwen"
   dbSendQuery(con , q)
   }
