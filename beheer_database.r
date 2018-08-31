@@ -50,3 +50,27 @@ data = fetch(z, n=-1)
 dbDisconnect(con)
 
 
+
+
+
+
+
+
+
+con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
+
+q = 'select id FROM digitaalschouwen LIMIT 9 '
+z = dbSendQuery(con , q)
+ids = fetch(z, n=-1)
+ids = ids[,1]
+
+ids_last = ids[length(ids)]
+ids = ids[-length(ids)]
+ids = paste0('\'', ids, '\', ')
+ids = paste(ids, collapse = ' ' )
+ids = paste0(ids, ' \'', ids_last, '\'')
+
+q = paste0('DELETE FROM digitaalschouwen WHERE id NOT IN (', ids ,')' )
+z = dbSendQuery(con , q)
+
+dbDisconnect(con)

@@ -62,9 +62,23 @@ if(i %% 5 == 0 ){
   con <- dbConnect(MySQL(), user="bf98019d0486fa", password="58973b37", dbname="ad_2de5416a43df6e8", host="us-cdbr-iron-east-01.cleardb.net" )
 }
 
-if(i %% 8 == 0 ){
-  q = "TRUNCATE TABLE digitaalschouwen"
-  dbSendQuery(con , q)
+  if(i %% 10 == 0 ){
+    #select 9 most recent reocords
+  q = 'select id FROM digitaalschouwen LIMIT 9 '
+  z = dbSendQuery(con , q)
+  ids = fetch(z, n=-1)
+  ids = ids[,1]
+  
+  #build query te remove all records older than most recent 9
+  ids_last = ids[length(ids)]
+  ids = ids[-length(ids)]
+  ids = paste0('\'', ids, '\', ')
+  ids = paste(ids, collapse = ' ' )
+  ids = paste0(ids, ' \'', ids_last, '\'')
+  
+  #send query
+  q = paste0('DELETE FROM digitaalschouwen WHERE id NOT IN (', ids ,')' )
+  z = dbSendQuery(con , q)
   }
 
   Sys.sleep(10)
