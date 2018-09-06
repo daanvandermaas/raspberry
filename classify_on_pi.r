@@ -12,7 +12,7 @@ system('sudo gpsd -n /dev/ttyS0 -F /var/run/gpsd.sock')
 
 model = load_model_hdf5('model')
 
-dir = '/media/pi/A894-0C66'
+dir = '/media/pi/x'
 
 dir.create(file.path(dir, 'ja'))
 dir.create(file.path(dir, 'nee'))
